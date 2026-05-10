@@ -13,6 +13,7 @@
   overflow: hidden;
 
   padding: 24px;
+  
 }
 
 .green {
@@ -41,6 +42,7 @@
 .asteroid {
   position: absolute;
   
+  
 }
 
 .dinosaur {
@@ -55,10 +57,11 @@
 .info {
   width: 320px;
   position: relative;
+  
 }
 
 .info h2 {
-  font-size: 42px;
+  font-size: 30px;
 
   margin-bottom: 24px;
 
@@ -102,15 +105,15 @@
   font-size: 16px;
 }
 
-.smallAsteroid {
+.small {
     left: 120px;
 }
 
-.mediumAsteroid {
+.medium {
   
   left: 70px;
 }
 
-.bigAsteroid {
+.big {
   top: -30px;
 }

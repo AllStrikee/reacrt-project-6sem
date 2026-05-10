@@ -32,22 +32,21 @@ function AsteroidCard({
       <div className={styles.left}>
         <img
           src={image}
-          alt=""
           className={`
             ${styles.asteroid}
             ${
-              name === '2021 FQ'
-                ? styles.smallAsteroid
-                : name === '2021 ER'
-                ? styles.mediumAsteroid
-                : styles.bigAsteroid
+              image.includes('big')
+                ? styles.big
+                : image.includes('medium')
+                ? styles.medium
+                : styles.small
             }
           `}
         />
 
         <img
           src={dinosaur}
-          alt=""
+          
           className={styles.dinosaur}
         />
       </div>

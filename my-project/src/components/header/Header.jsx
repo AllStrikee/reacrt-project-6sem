@@ -1,24 +1,34 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Header.module.css';
 
 function Header() {
   return (
     <header className={styles.header}>
       <div>
-        <h1 className={styles.title}>ARMAGGEDON V</h1>
+        <h1 className={styles.title}>
+          ARMAGGEDON V
+        </h1>
 
         <p className={styles.description}>
-          Сервис мониторинга и уничтожения астероидов,
+          Сервис мониторинга и уничтожения
+          астероидов,
           <br />
           опасно подлетающих к Земле.
         </p>
       </div>
 
       <nav className={styles.nav}>
-        <a href="/" className={styles.active}>
+        <Link
+          to="/"
+          className={styles.active}
+        >
           Астероиды
-        </a>
+        </Link>
 
-        <a href="/">Уничтожение</a>
+        <Link to="/destruction">
+          Уничтожение
+        </Link>
       </nav>
     </header>
   );

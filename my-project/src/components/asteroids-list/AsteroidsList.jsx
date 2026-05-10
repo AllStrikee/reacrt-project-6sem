@@ -1,65 +1,84 @@
 import AsteroidCard from '../asteroid-card/AsteroidCard';
 
-import small from '../../assets/asteroid-small.png';
-import medium from '../../assets/asteroid-medium.png';
-import big from '../../assets/asteroid-big.png';
+import asteroidBig from '../../assets/asteroid-big.png';
+import asteroidMedium from '../../assets/asteroid-medium.png';
+import asteroidSmall from '../../assets/asteroid-small.png';
 
 import styles from './AsteroidsList.module.css';
 
 function AsteroidsList({
+  asteroids,
   showDangerousOnly,
   distanceMode,
 }) {
-  const asteroids = [
-    {
-      id: 1,
-      name: '2021 FQ',
-      date: '12 сентября 2021',
-      distanceKm: 7235024,
-      size: '85 м',
-      danger: 'не опасен',
-      bg: 'green',
-      image: small,
-    },
-    {
-      id: 2,
-      name: '2021 ER',
-      date: '2 ноября 2021',
-      distanceKm: 9331775,
-      size: '300 м',
-      danger: 'не опасен',
-      bg: 'green',
-      image: medium,
-    },
-    {
-      id: 3,
-      name: '2022 QQ',
-      date: '3 марта 2022',
-      distanceKm: 2866012,
-      size: '850 м',
-      danger: 'опасен',
-      bg: 'red',
-      image: big,
-    },
-  ];
-
-  const filteredAsteroids =
-    showDangerousOnly
+  const filteredAsteroids = Array.isArray(
+    asteroids
+  )
+    ? showDangerousOnly
       ? asteroids.filter(
-          (item) =>
-            item.danger === 'опасен'
+          asteroid =>
+            asteroid.is_potentially_hazardous_asteroid
         )
-      : asteroids;
+      : asteroids
+    : [];
+
+  const images = [
+    asteroidBig,
+    asteroidMedium,
+    asteroidSmall,
+  ];
 
   return (
     <div className={styles.list}>
-      {filteredAsteroids.map((item) => (
-        <AsteroidCard
-          key={item.id}
-          {...item}
-          distanceMode={distanceMode}
-        />
-      ))}
+      {filteredAsteroids.map(
+        (item, index) => (
+          <AsteroidCard
+            key={item.id}
+            name={item.name}
+            date={
+              item.close_approach_data &&
+              item.close_approach_data
+                .length > 0
+                ? item.close_approach_data[0]
+                    .close_approach_date
+                : 'Нет даты'
+            }
+            distanceKm={
+              item.close_approach_data &&
+              item.close_approach_data
+                .length > 0
+                ? Math.round(
+                    Number(
+                      item
+                        .close_approach_data[0]
+                        .miss_distance
+                        .kilometers
+                    )
+                  )
+                : 0
+            }
+            size={`${Math.round(
+              item.estimated_diameter
+                ?.meters
+                ?.estimated_diameter_max || 0
+            )} м`}
+            danger={
+              item.is_potentially_hazardous_asteroid
+                ? 'опасен'
+                : 'не опасен'
+            }
+            bg={
+              item.is_potentially_hazardous_asteroid
+                ? 'red'
+                : 'green'
+            }
+            image={
+              images[index % images.length]
+            }
+            distanceMode={distanceMode}
+          />
+        )
+      )}
     </div>
   );
 }

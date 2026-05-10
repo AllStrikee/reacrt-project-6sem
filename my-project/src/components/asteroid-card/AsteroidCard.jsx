@@ -2,6 +2,8 @@ import styles from './AsteroidCard.module.css';
 
 import dinosaur from '../../assets/dinosaur.png';
 
+import { memo } from 'react';
+
 function AsteroidCard({
   name,
   date,
@@ -92,4 +94,4 @@ function AsteroidCard({
   );
 }
 
-export default AsteroidCard;
+export default memo(AsteroidCard);

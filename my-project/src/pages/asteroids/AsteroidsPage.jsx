@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, } from 'react';
 
 import { getAsteroids } from '../../api/asteroidController';
 
@@ -18,6 +18,15 @@ function AsteroidsPage() {
     useState('km');
 
   const [loading, setLoading] = useState(true);
+
+  const handleKmClick = useCallback(() => {
+  setDistanceMode('km');
+}, []);
+
+const handleLunarClick =
+  useCallback(() => {
+    setDistanceMode('lunar');
+  }, []);
 
   useEffect(() => {
     async function loadAsteroids() {
@@ -63,9 +72,7 @@ function AsteroidsPage() {
                 ? 'activeLink'
                 : 'link'
             }
-            onClick={() =>
-              setDistanceMode('km')
-            }
+            onClick={handleKmClick}
           >
             в километрах
           </span>
@@ -78,9 +85,7 @@ function AsteroidsPage() {
                 ? 'activeLink'
                 : 'link'
             }
-            onClick={() =>
-              setDistanceMode('lunar')
-            }
+            onClick={handleLunarClick}
           >
             в дистанциях до Луны
           </span>

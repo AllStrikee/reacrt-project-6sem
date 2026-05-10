@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 200px;
+
+  border: 1px solid #333;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  padding: 24px;
+}
+
+.green {
+  background: linear-gradient(
+    90deg,
+    #d7f28c 0%,
+    #78dd8b 100%
+  );
+}
+
+.red {
+  background: linear-gradient(
+    90deg,
+    #f3a48f 0%,
+    #ff004d 100%
+  );
+}
+
+.left {
+  position: relative;
+
+  width: 220px;
+  height: 100%;
+}
+
+.asteroid {
+  position: absolute;
+  
+}
+
+.dinosaur {
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 60px;
+}
+
+.info {
+  width: 320px;
+  position: relative;
+}
+
+.info h2 {
+  font-size: 42px;
+
+  margin-bottom: 24px;
+
+  text-decoration: underline;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+
+  font-size: 18px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.safe {
+  font-size: 22px;
+}
+
+.danger {
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.right button {
+  background: #1f6fff;
+  color: white;
+
+  padding: 14px 24px;
+
+  border-radius: 24px;
+
+  font-size: 16px;
+}
+
+.smallAsteroid {
+    left: 120px;
+}
+
+.mediumAsteroid {
+  
+  left: 70px;
+}
+
+.bigAsteroid {
+  top: -30px;
+}

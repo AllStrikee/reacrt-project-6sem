@@ -30,6 +30,9 @@
 .link {
   text-decoration: underline;
   text-underline-offset: 4px;
+
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .hero {
@@ -41,4 +44,12 @@
   border-radius: 10px;
 
   margin-bottom: 20px;
+}
+
+
+.activeLink {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

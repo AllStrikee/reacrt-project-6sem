@@ -5,32 +5,45 @@ import dinosaur from '../../assets/dinosaur.png';
 function AsteroidCard({
   name,
   date,
-  distance,
+  distanceKm,
   size,
   danger,
   bg,
   image,
+  distanceMode,
 }) {
+  const lunarDistance = Math.round(
+    distanceKm / 384400
+  );
+
+  const formattedDistance =
+    distanceMode === 'km'
+      ? `${distanceKm.toLocaleString('ru-RU')} км`
+      : `${lunarDistance} дистанций`;
+
   return (
     <div
       className={`${styles.card} ${
-        bg === 'red' ? styles.red : styles.green
+        bg === 'red'
+          ? styles.red
+          : styles.green
       }`}
     >
       <div className={styles.left}>
-        <img src={image}
-        alt=""
-        className={`
+        <img
+          src={image}
+          alt=""
+          className={`
             ${styles.asteroid}
             ${
-                name === '2021 FQ'
-                    ? styles.smallAsteroid
-                    : name === '2021 ER'
-                    ? styles.mediumAsteroid
-                    : styles.bigAsteroid
-    }
-  `}
-   />
+              name === '2021 FQ'
+                ? styles.smallAsteroid
+                : name === '2021 ER'
+                ? styles.mediumAsteroid
+                : styles.bigAsteroid
+            }
+          `}
+        />
 
         <img
           src={dinosaur}
@@ -49,7 +62,8 @@ function AsteroidCard({
 
         <div className={styles.row}>
           <span>Расстояние</span>
-          <span>{distance}</span>
+
+          <span>{formattedDistance}</span>
         </div>
 
         <div className={styles.row}>
